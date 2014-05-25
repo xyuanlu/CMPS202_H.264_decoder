@@ -1,0 +1,274 @@
+32       
+0 dfuncs.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/dfuncs.h
+0 dfuncs.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/dfuncs.h
+0 dfuncs.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/dfuncs.h
+0 dfuncs.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/dfuncs.h
+0 dfuncs.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/dfuncs.h
+0 dfuncs.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/dfuncs.h
+0 dfuncs.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/dfuncs.h
+0 dfuncs.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/dfuncs.h
+0 dfuncs.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/dfuncs.h
+0 dfuncs.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/dfuncs.h
+0 logfunc.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/logfunc.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/logfunc.h
+0 logfunc.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/logfunc.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/logfunc.h
+0 logfunc.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/logfunc.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/logfunc.h
+0 logfunc.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/logfunc.h
+0 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/logfunc.h
+100
++cli
++incdir+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl
++incdir+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl
++incdir+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl
++incdir+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl
++incdir+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl
++v2k
++warn=noSV-LCM-PPWI
++warn=noSV-LCM-RIPI
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -Wno-write-strings -I/mada/software/synopsys/vcs//include -I/mada/users/xyuanlu/projs/mascrtl/scripts/ttb_templates/ -I/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl -I/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl -I/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl -I/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl -I/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl -O -I/mada/software/synopsys/vcs/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/tests/alu_ref_design_tb.cpp /mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/tests/alu_ref_design_ttb.cpp
+-Mldflags=
+-Mobjects= /mada/software/synopsys/vcs/amd64/lib/libvirsim.so /mada/software/synopsys/vcs/amd64/lib/liberrorinf.so /mada/software/synopsys/vcs/amd64/lib/libsnpsmalloc.so
+-Mout=simv
+-Msaverestoreobj=/mada/software/synopsys/vcs/amd64/lib/vcs_save_restore_new.o
+-Msyslibs=-ldl -lm
+-Mvcsaceobjs=
+-P
+-full64
+-gen_obj
+-q
+-sverilog
+/mada/software/synopsys/vcs/amd64/bin/vcs1
+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/eq_a_b.v
+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/latch_d_g.v
+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/latch_d_g_slow.v
+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/latch_rn_g.v
+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/nand_a_b.v
+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/nao_a_b_c_fast.v
+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/not_a.v
+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/or_a_b.v
+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/or_a_b_c_d.v
+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/tribuf_a_en.v
+/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/tribuf_weak0.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/RAM_1RD_1WR.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/RAM_4RD_3WR.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/async_ram_1port.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/async_ram_1r1w.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/async_ram_2port.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/bstage.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_failq.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_failq_latch.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_failq_or_diff.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_failure.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_fake_inputs.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_rco.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/register.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/retry_common.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage_flop_reclock.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage_flop_retry.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage_latch_reclock.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage_latch_retry.v
+/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage_latch_shadowq.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_1OUT_1IN.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_1OUT_1IN_no_flop.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_1PORT.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_2OUT_1IN.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_3OUT_1IN.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_4OUT_1IN.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_4OUT_2IN.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_4OUT_3IN.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_5OUT_1IN.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_6OUT_1IN.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/flops.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/generic_dpram_as.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/generic_dpram_ss.v
+/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/generic_syncram.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/alu.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/alu_dmux.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/alu_ref_design.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/alu_top.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/alu_types.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/rnode_alu.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/tests/alu_ref_design_tb.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/tests/alu_ref_design_ttb.tab
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/UCSD_DW01_prienc.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/adder_rnode.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/dcsync_4b_counter.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/mbt_fifo.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler_cbc.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler_in.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler_out.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler_pack_p1.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler_pack_p2.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_channel.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_common.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/reclock_manamgement_unit.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/recv_fifo.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/rnet_common.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/rnpipe.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/rnswitch.v
+/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/send_fifo.v
+57
+sysc_uni_pwd=/soe/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode
+VSIM_HOME=/mada/software/mentor/modeltech/
+VRF_ROOT=/mada/software/techfiles/VeloceRF_v1.6_cmos28g/vlc_8U1x_2T16x_LB
+VMR_MODE_FLAG=64
+VCS_MX_HOME_INTERNAL=1
+VCS_MODE_FLAG=64
+VCS_HOME=/mada/software/synopsys/vcs/
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=amd64
+UNAME=/bin/uname
+TOOL_HOME=/mada/software/synopsys/vcs/amd64
+TESSENT_HOME=/mada/software/mentor/tessent90
+TECH_TSMC40=/mada/software/techfiles/TSMCHOME/digital/Front_End/verilog/tcbn40lpbwp_120a/tcbn40lpbwp.v
+TECH_STM90=/mada/software/techfiles/cmos90/CORE90GPLVT_2.2/behaviour/verilog/CORE90GPLVT.v
+TECH_SAED32=/mada/software/techfiles/saed32/SAED32_EDK/lib/stdcell_hvt/verilog/saed32nm_hvt.v
+SYN_HOME=/mada/software/synopsys/syn
+SS_HOME=/mada/software/cadence/TSI61
+SSH_TTY=/dev/pts/55
+SSH_CONNECTION=67.180.245.51 55455 128.114.63.123 22
+SSH_CLIENT=67.180.245.51 55455 22
+SONNET_DIR=/mada/software/sonnet
+SOFT=/mada/software
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+PTS_HOME=/mada/software/synopsys/pts
+PROJS=/mada/users/renau/projs
+OVA_UUM=0
+OSUcells=/mada/software/techfiles/osu_soc_v2.7/cadence
+OA_UNSUPPORTED_PLAT=linux_rhel40_gcc44x
+OA_MODE=opt
+OA_HOME=/mada/software/cadence/IC611/share/oa
+OA_BIT=32
+NCV_HOME=/mada/software/cadence/IUS81
+MMSIM_PATH=/mada/software/cadence/MMSIM70/tools/bin
+MMSIMHOME=/mada/software/cadence/MMSIM70/
+MINT_TARGET=opteron
+MG_HOME=/mada/software/synopsys/magellan/
+MGC_TMPDIR=/tmp
+MGC_HOME=/mada/software/mentor/calibre/ixl_cal_2012.3_15.13
+KRB5CCNAME=FILE:/tmp/krb5cc_2418_U32259
+HSPICE_64=1
+HPEESOF_DIR=/mada/software/ADS2008
+HELIC_ROOT=/mada/software/helic_2011.24.1
+HELIC_PDK_ROOT=/mada/software/techfiles/hc_cmos28hpp_8U1x_2T16x_LB
+HCLMD_LICENSE_FILE=5175@lmserv.soe.ucsc.edu
+GLADE_HOME=/mada/software/glade4_linux64_ub10
+CVS_RSH=ssh
+CDS_ROOT=/mada/software/cadence/IC611/tools.lnx86
+CDS_Netlisting_Mode=Analog
+CDS_LIC_FILE=5280@lmserv.soe.ucsc.edu <mailto:5280@lmserv.soe.ucsc.edu>
+CDS_INST_DIR=/mada/software/cadence
+CDSHOME=/mada/software/cadence/IC611
+CDN_SYNTH_ROOT=/mada/software/cadence/RC91/tools.lnx86/
+CALIBRE_HOME=/mada/software/mentor/calibre/ixl_cal_2012.3_15.13
+CAD_ROOT=/mada/software/magic/lib
+ATISTREAMSDKROOT=/mada/software/ati-stream-sdk-v2.1-lnx64
+0
+73
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/logfunc.h
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/dfuncs.h
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/alu_dmux.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/alu_top.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/rnode_alu.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/alu_ref_design.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/alu.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler_cbc.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/rnpipe.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/rnswitch.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/reclock_manamgement_unit.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/dcsync_4b_counter.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/UCSD_DW01_prienc.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler_pack_p1.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler_out.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_channel.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/recv_fifo.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/send_fifo.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler_pack_p2.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/mbt_fifo.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_assembler_in.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/adder_rnode.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage_flop_reclock.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage_flop_retry.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/async_ram_2port.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage_latch_shadowq.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/bstage.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_fake_inputs.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_failq.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage_latch_reclock.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/register.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_failq_or_diff.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_failure.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/async_ram_1port.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/RAM_4RD_3WR.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/stage_latch_retry.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/RAM_1RD_1WR.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/async_ram_1r1w.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_rco.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/reclock_failq_latch.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_2OUT_1IN.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/generic_dpram_as.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_5OUT_1IN.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_1PORT.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_3OUT_1IN.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_6OUT_1IN.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/generic_syncram.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_1OUT_1IN_no_flop.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/generic_dpram_ss.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/flops.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_1OUT_1IN.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_4OUT_2IN.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_4OUT_1IN.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/storage/rtl/RAM_4OUT_3IN.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/or_a_b_c_d.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/latch_rn_g.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/not_a.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/or_a_b.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/latch_d_g_slow.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/nand_a_b.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/latch_d_g.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/nao_a_b_c_fast.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/tribuf_weak0.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/eq_a_b.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/cells/rtl/tribuf_a_en.v
+1400042377 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/tests/alu_ref_design_tb.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl/alu_types.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/rnet_common.v
+1397587691 /mada/users/xyuanlu/projs/mascrtl/code/retry/rtl/retry_common.v
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl/murnio_common.v
+1400042377 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/tests/alu_ref_design_ttb.tab
+6
+1397587694 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/tests/alu_ref_design_tb.cpp
+1400042377 /mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/tests/alu_ref_design_ttb.cpp
+0 
+1322023672 /mada/software/synopsys/vcs/amd64/lib/libvirsim.so
+1322023397 /mada/software/synopsys/vcs/amd64/lib/liberrorinf.so
+1322023255 /mada/software/synopsys/vcs/amd64/lib/libsnpsmalloc.so
