@@ -44,27 +44,19 @@
 ****************************************************************************/
 
 
-import retry_common::*;
-import rnet_common::*;
-import alu_types::*;
+//import retry_common::*;
+//import rnet_common::*;
+//import H264_types::*;
+`include "timescale.v"
 
-`ifdef USE_SDF1
- `timescale 1ns / 1fs
- `include "asic/alu_ref_design_netlist.v"
-`endif
 
-module  alu_ref_design_tb();
+module  H264_tb();
 
   //Start DUT variable definition
-  BoolType		reset;
-  RingPacketType		switch_2_block;
-  BoolType		switch_2_blockValid;
-  BoolType		switch_2_blockRetry;
-  ReclkIOType		rci0;
-  ReclkIOType		rco1;
-  RingPacketType		block_2_switch;
-  BoolType		block_2_switchValid;
-  BoolType		block_2_switchRetry;
+	logic reset_n;
+	logic pin_disable_DF;
+	logic freq_ctrl0;
+	logic freq_ctrl1;
 
   logic mclk;
 
@@ -73,13 +65,11 @@ module  alu_ref_design_tb();
   real                                  val_set_delay;
   real                                  val_check_delay;
   real                                  val_clk_width;
-  int                                   tb_cycle;
-  int                                   tb_tune_val;
   logic                            clk;
 	logic                            CLK_PAD;
 	assign CLK_PAD = clk;
 
-  alu_ref_design alu_ref_design_dut(.*);
+  nova_tb H264_dut(.*);
   
 
   initial begin
@@ -102,51 +92,19 @@ module  alu_ref_design_tb();
     $display("full clock %5.3f GHz +clk=%g +clk_delay=%.2f +clk_width=%.2f +set_delay=%.2f +check_delay=%.2f", 1.0/val, val, val_clk_delay, val_clk_width, val_set_delay, val_check_delay);
   end
 
-`ifdef USE_SDF1
-  initial begin
-    $sdf_annotate("asic/alu_ref_design.sdf", alu_ref_design_dut);
-  end
-`endif
+
 
   initial begin
 		// Not all the blocks use reset (assume reset set for simpler testcases
-		reset = 1'b1;
+		//reset = 1'b1;
     mclk                                = 1'b1;
     clk                                 = 1'b1;
     
-    $alu_ref_design_init (reset,
-		 switch_2_block,
-		 switch_2_blockValid,
-		 switch_2_blockRetry,
-		 rci0,
-		 rco1,
-		 block_2_switch,
-		 block_2_switchValid,
-		 block_2_switchRetry,
-	   tb_cycle, 
-     tb_tune_val);// /init fn
+    $H264_init (reset_n,
+		 pin_disable_DF,
+		 freq_ctrl0,
+		 freq_ctrl1);// /init fn
 
-
-`ifdef USE_SAIF
-
-    //$read_rtl_saif("fpu_dump.saif","alu_ref_design_tb.alu_ref_design_dut");
-    $set_gate_level_monitoring("rtl_on");
-    $set_toggle_region("alu_ref_design_tb.alu_ref_design_dut");
-    $toggle_start();
-
-    $dumpfile("alu_ref_design_dump.vcd");
-    $dumpvars();
-    $dumpon;
-
-    #(100000*val_clk_delay)
-    #10
-    $toggle_stop();
-    #10$toggle_report("alu_ref_design_dump.saif", 1.0e-12, "alu_ref_design_tb.alu_ref_design_dut");
-    //$dumpoff;
-    $dumpflush;
-    $display("Done with the SAIF/VCD sampling\n");
-    $finish;
-`endif
   end
 
   always begin
@@ -177,16 +135,16 @@ module  alu_ref_design_tb();
 `ifdef USE_SDF
   always @(posedge clk) begin
     #(val_set_delay*val)
-    $alu_ref_design_set();
+    $H264_set();
   end
   always @(posedge clk) begin
     #(val_check_delay*val)
-    $alu_ref_design_check();
+    $H264_check();
   end
 `else
   always @(posedge clk) begin
-    #(51*val/100) $alu_ref_design_set();
-    #(40*val/100) $alu_ref_design_check();
+    #(51*val/100) $H264_set();
+    #(40*val/100) $H264_check();
   end
 `endif
  

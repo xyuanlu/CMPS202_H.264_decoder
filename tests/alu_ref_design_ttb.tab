@@ -1,6 +1,0 @@
-$alu_ref_design_init  call=alu_ref_design_init  acc=rw:alu_ref_design
-$alu_ref_design_set   call=alu_ref_design_set   acc=wn:alu_ref_design
-$alu_ref_design_check call=alu_ref_design_check acc=r:alu_ref_design
-$inc_stat1 call=inc_stat1 acc=r:alu_ref_design
-$inc_stat2 call=inc_stat2 acc=r:alu_ref_design
-$alu_ref_design_end   call=alu_ref_design_end   acc=rw:alu_ref_design

@@ -1,0 +1,4 @@
+$H264_init  call=H264_init  acc=rw:H264
+$H264_set   call=H264_set   acc=wn:H264
+$H264_check call=H264_check acc=r:H264
+$H264_end   call=H264_end   acc=rw:H264

@@ -1,0 +1,18 @@
+<project name="H264">
+  <requires>rnet</requires>
+  <requires>storage</requires>
+  <requires>retry</requires>
+  <asic tech="90" frequency="1400" suite="dc"/>
+  <fpga base="H264" tool="synplify"/>
+  <asic base="H264"/>
+  <testbench base="H264_tb" suite="vcs" ttb="nova_tb.v">
+    <verilog>
+      tests/H264_tb.v
+     </verilog>
+    <source>
+      tests/H264_tb.cpp
+      tests/H264_ttb.cpp
+    </source>
+    <tab>tests/H264_ttb.tab</tab>
+  </testbench>
+</project>
