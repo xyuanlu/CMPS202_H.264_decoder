@@ -11,7 +11,7 @@
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
-`include "timescale.v"
+//`include "timescale.v"
 // synopsys translate_on
 `include "nova_defines.v"
 
@@ -84,6 +84,15 @@ module BitStream_buffer (clk,reset_n,BitStream_buffer_input,pc,
 			buffer_index <= buffer_index + 16; 
 		else if (half_fill_counter > 1 && half_fill_counter <= 5)
 			buffer_index <= buffer_index + 16;
+
+
+	always @ (posedge clk)	
+		$display("BitStream_buffer_output:= %d, BitStream_buffer_valid_n:= %d, half_fill_counter:=%d\n", BitStream_buffer_output, BitStream_buffer_valid_n, half_fill_counter);
+
+
+
+
+
 	
 	always @ (posedge clk)
 		if (reset_n == 1'b0)

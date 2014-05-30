@@ -1,5 +1,0 @@
-
- swap rnode_alu to alu_rnode.v
-
- rename alu to something less generic (alu_ref?)
-

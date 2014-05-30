@@ -39,24 +39,36 @@
 
 
 /****************************************************************************
-    Description: TestBench Verilog File for alu_ref_design.v
+    Description: TestBench Verilog File for H264.v
  
 ****************************************************************************/
 
 
-//import retry_common::*;
-//import rnet_common::*;
-//import H264_types::*;
-`include "timescale.v"
+import retry_common::*;
+import H264_types::*;
 
 
 module  H264_tb();
 
   //Start DUT variable definition
-	logic reset_n;
-	logic pin_disable_DF;
-	logic freq_ctrl0;
-	logic freq_ctrl1;
+  BoolType		reset_n;
+  BitstreamType		BitStream_buffer_input;
+  BoolType		pin_disable_DF;
+  BoolType		freq_ctrl0;
+  BoolType		freq_ctrl1;
+  BoolType		BitStream_ram_ren;
+  BitstreamAddrType		BitStream_ram_addr;
+  PicnumType		pic_num;
+  BoolType		ext_frame_RAM0_cs_n;
+  BoolType		ext_frame_RAM0_wr;
+  RamAddrType		ext_frame_RAM0_addr;
+  RamDataType		ext_frame_RAM0_data;
+  BoolType		ext_frame_RAM1_cs_n;
+  BoolType		ext_frame_RAM1_wr;
+  RamAddrType		ext_frame_RAM1_addr;
+  RamDataType		ext_frame_RAM1_data;
+  RamDataType		dis_frame_RAM_din;
+  BoolType		slice_header_s6;
 
   logic mclk;
 
@@ -65,14 +77,16 @@ module  H264_tb();
   real                                  val_set_delay;
   real                                  val_check_delay;
   real                                  val_clk_width;
+  int                                   tb_cycle;
+  int                                   tb_tune_val;
   logic                            clk;
 	logic                            CLK_PAD;
 	assign CLK_PAD = clk;
 
-  nova_tb H264_dut(.*);
+  H264 H264_dut(.*);
   
 
-  initial begin
+  /*initial begin
     if (!$value$plusargs("clk=%g",val)) begin
       val                               = 100;
     end
@@ -91,26 +105,55 @@ module  H264_tb();
 
     $display("full clock %5.3f GHz +clk=%g +clk_delay=%.2f +clk_width=%.2f +set_delay=%.2f +check_delay=%.2f", 1.0/val, val, val_clk_delay, val_clk_width, val_set_delay, val_check_delay);
   end
-
+*/
 
 
   initial begin
 		// Not all the blocks use reset (assume reset set for simpler testcases
-		//reset = 1'b1;
-    mclk                                = 1'b1;
+		
+    //mclk                                = 1'b1;
     clk                                 = 1'b1;
+	//reset_n = 1'b1;
+	pin_disable_DF = 1'b0;
+	freq_ctrl0 = 1'b0;
+	freq_ctrl1 = 1'b1;
+	//#1100 reset_n = 1'b0;
+	//#1000 reset_n = 1'b1;
     
     $H264_init (reset_n,
+		 BitStream_buffer_input,
 		 pin_disable_DF,
 		 freq_ctrl0,
-		 freq_ctrl1);// /init fn
+		 freq_ctrl1,
+		 BitStream_ram_ren,
+		 BitStream_ram_addr,
+		 pic_num,
+		 ext_frame_RAM0_cs_n,
+		 ext_frame_RAM0_wr,
+		 ext_frame_RAM0_addr,
+		 ext_frame_RAM0_data,
+		 ext_frame_RAM1_cs_n,
+		 ext_frame_RAM1_wr,
+		 ext_frame_RAM1_addr,
+		 ext_frame_RAM1_data,
+		 dis_frame_RAM_din,
+		 slice_header_s6,
+	   tb_cycle, 
+     tb_tune_val);// /init fn
+
+
 
   end
 
-  always begin
+  /*always begin
     #(val/2) mclk                   = ~mclk;
-  end
+  end*/
 
+
+  always 
+		#340 clk = ~clk;
+/*
+  
 `ifdef USE_SDF
   always @(posedge clk) begin // Sync with master clock
     // Pulse width
@@ -131,6 +174,7 @@ module  H264_tb();
     #(val) clk                   = 1'b1;
   end
 `endif
+*/
 
 `ifdef USE_SDF
   always @(posedge clk) begin

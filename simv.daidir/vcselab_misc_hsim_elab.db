@@ -1,5 +1,5 @@
 psSimBaseName                      	simv
-pDaiDir                            	/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/simv.daidir
+pDaiDir                            	/mada/users/xyuanlu/projs/mascrtl/code/tapeout/H264/simv.daidir
 destPath                           	csrc/
 hsMainFileCount                    	0
 hsMainFileName                     	dummy

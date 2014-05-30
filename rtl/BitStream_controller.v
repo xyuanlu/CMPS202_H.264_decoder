@@ -11,7 +11,7 @@
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
-`include "timescale.v"
+//`include "timescale.v"
 // synopsys translate_on
 `include "nova_defines.v"
 
@@ -236,6 +236,12 @@ module BitStream_controller (clk,reset_n,freq_ctrl0,freq_ctrl1,BitStream_buffer_
 	wire [11:0] bs_V0,bs_V1,bs_V2,bs_V3;
 	wire [11:0] bs_H0,bs_H1,bs_H2,bs_H3;
 	wire mv_mbAddrB_rd_for_DF;
+
+
+
+	
+	
+
 	
 	BitStream_buffer BitStream_buffer (
 		.clk(clk),

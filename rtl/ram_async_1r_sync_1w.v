@@ -22,7 +22,7 @@
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
-`include "timescale.v"
+//`include "timescale.v"
 // synopsys translate_on
 `include "nova_defines.v"
 module ram_async_1r_sync_1w (clk, rst_n, cs_n, wr_n, rd_addr, wr_addr, data_in, data_out);

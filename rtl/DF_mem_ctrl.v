@@ -11,7 +11,7 @@
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
-`include "timescale.v"
+//`include "timescale.v"
 // synopsys translate_on
 `include "nova_defines.v"
 
@@ -320,6 +320,9 @@ module DF_mem_ctrl (clk,reset_n,gclk_end_of_MB_DEC,disable_DF,mb_num_h,mb_num_v,
 	( disable_DF && blk4x4_sum_counter[2] != 1'b1) || 
 	(!disable_DF && (Is_mbAddrA_wr || Is_mbAddrB_wr || Is_currMB_wr || Is_12cycles_wr));
 	assign dis_frame_RAM_wr = (dis_frame_RAM_wr_tmp & (~Is_mbAddrA_virtual_wr));
+	
+	//always @ (posedge clk)
+		//$display("blk4x4_sum_counter[2]:= %d, reset:= %d", blk4x4_sum_counter[2], reset_n);///////////////////////////////////////////////////
 	
 	wire Is_luma_wr;
 	wire Is_chroma_wr;

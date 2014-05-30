@@ -56,7 +56,7 @@ TMPSPECENV=$(VCSTMPSPECENV)
 CC=$(TMPSPECENV) $(VCS_CC) $(TMPSPECARG)
 
 # C flags for compilation
-CFLAGS=-w  -pipe -Wno-write-strings -I/mada/software/synopsys/vcs//include -I/mada/users/xyuanlu/projs/mascrtl/scripts/ttb_templates/ -I/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl -I/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl -I/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl -I/mada/users/xyuanlu/projs/mascrtl/code/tapeout/rnet/rtl -I/mada/users/xyuanlu/projs/mascrtl/code/tapeout/alu_rnode/rtl -O -I/mada/software/synopsys/vcs/include   
+CFLAGS=-w  -pipe -Wno-write-strings -I/mada/software/synopsys/vcs//include -I/mada/users/xyuanlu/projs/mascrtl/scripts/ttb_templates/ -I/mada/users/xyuanlu/projs/mascrtl/code/storage/rtl -I/mada/users/xyuanlu/projs/mascrtl/code/retry/rtl -I/mada/users/xyuanlu/projs/mascrtl/code/cells/rtl -I/mada/users/xyuanlu/projs/mascrtl/code/tapeout/H264/rtl -O -I/mada/software/synopsys/vcs/include   
 
 # Partial linking
 LD_PARTIAL=ld -r -o

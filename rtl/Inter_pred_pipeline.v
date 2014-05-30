@@ -15,7 +15,7 @@
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
-`include "timescale.v"
+//`include "timescale.v"
 // synopsys translate_on
 `include "nova_defines.v"
 
@@ -393,6 +393,13 @@ module Inter_pred_pipeline (clk,reset_n,
 	assign end_of_one_blk4x4_inter = (blk4x4_inter_calculate_counter == 4'd1 &&
 	((IsInterChroma && mv_below8x8_curr && Inter_chroma2x2_counter == 2'b00) ||
 	!(IsInterChroma && mv_below8x8_curr)));
+
+
+	//always @ (posedge clk)
+		//$display(" blk4x4_inter_calculate_counter:= %d ", blk4x4_inter_calculate_counter);//////////////////////////////////////
+
+
+
 	//----------------------------------------------------------------------------------------
 	//Inter prediction reference frame RAM read control
 	//----------------------------------------------------------------------------------------

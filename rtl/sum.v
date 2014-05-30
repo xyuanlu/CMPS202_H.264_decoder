@@ -12,7 +12,7 @@
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
-`include "timescale.v"
+//`include "timescale.v"
 // synopsys translate_on
 `include "nova_defines.v"
 
@@ -229,6 +229,10 @@ module sum (clk,reset_n,slice_data_state,residual_state,TotalCoeff,curr_CBPLuma_
 			blk4x4_sum_counter <= 3'd0;
 		else if (blk4x4_sum_counter != 3'd4)
 			blk4x4_sum_counter <= blk4x4_sum_counter + 1;
+
+	//always @ (posedge clk)
+		//$display("blk4x4_sum_counter[2]:= %d, blk4x4_sum_counter[1]:= %d, blk4x4_sum_counter[0]:= %d", blk4x4_sum_counter[2], blk4x4_sum_counter[1], blk4x4_sum_counter[0]);//////////////////////////////////////
+
 	
 	assign end_of_one_blk4x4_sum = (blk4x4_sum_counter == 3'd3)? 1'b1:1'b0;
 	//------------------------------------------------------

@@ -17,7 +17,7 @@
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
-`include "timescale.v"
+//`include "timescale.v"
 // synopsys translate_on
 `include "nova_defines.v"
 
@@ -258,6 +258,11 @@ module hybrid_pipeline_ctrl (clk,reset_n,mb_num_h,mb_num_v,blk4x4_rec_counter,Co
 						
 	//5.trigger Deblocking Filter
 	//assign trigger_MB_DF = (end_of_MB_DEC == 1'b1 && !disable_DF)? 1'b1:1'b0;
+
+	//always @ (posedge clk)
+		//$display(" trigger_blk4x4_rec_sum:= %d ", trigger_blk4x4_rec_sum);//////////////////////////////////////
+
+
 	
 endmodule
 		

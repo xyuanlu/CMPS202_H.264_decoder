@@ -21,7 +21,7 @@
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
-`include "timescale.v"
+//`include "timescale.v"
 // synopsys translate_on
 `include "nova_defines.v"
 
@@ -204,6 +204,26 @@ module reconstruction (clk,reset_n,mb_type_general,mb_num_h,mb_num_v,NextMB_IsSk
 	wire [13:0] ref_frame_RAM_rd_addr;
 	wire [31:0] ref_frame_RAM_dout;
 	
+
+/*
+	always @ (posedge clk)
+		$display("mb_type_general:= %d, mb_num_h:= %d, NextMB_IsSkip:= %d, slice_data_state:= %d\n", mb_type_general, mb_num_h, NextMB_IsSkip, slice_data_state);//////////////////////////////////////
+	always @ (posedge clk)	
+		$display("end_of_one_residual_block:= %d, Intra16x16_predmode:= %d, Intra_chroma_predmode:= %d\n", end_of_one_residual_block, Intra16x16_predmode, Intra_chroma_predmode);/////////
+	always @ (posedge clk)	
+		$display("QPy:= %d, i4x4_CbCr:= %d, slice_alpha_c0_offset_div2:= %d\n", QPy, i4x4_CbCr, slice_alpha_c0_offset_div2);/////////
+	always @ (posedge clk)	
+		$display("TotalCoeff:= %d, Is_skip_run_entry:= %d, disable_DF:= %d\n", TotalCoeff, Is_skip_run_entry, disable_DF);/////////
+	always @ (posedge clk)	
+		$display("coeffLevel_0:= %d, coeffLevel_5:= %d, coeffLevel_15:= %d\n", coeffLevel_0, coeffLevel_5, coeffLevel_15);/////////
+	always @ (posedge clk)	
+		$display("mvx_CurrMb0:= %d, mvx_CurrMb1:= %d, mvx_CurrMb3:= %d\n", mvx_CurrMb0, mvx_CurrMb1, mvx_CurrMb3);/////////
+	always @ (posedge clk)	
+		$display("end_of_BS_DEC:= %d, bs_V0:= %d, bs_H1:= %d\n", end_of_BS_DEC, bs_V0, bs_H1);/////////
+
+
+*/
+
 	
 	rec_gclk_gen rec_gclk_gen (
 		.clk(clk),

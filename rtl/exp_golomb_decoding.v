@@ -11,7 +11,7 @@
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
-`include "timescale.v"
+//`include "timescale.v"
 // synopsys translate_on
 `include "nova_defines.v"
 
@@ -57,6 +57,14 @@ module exp_golomb_decoding (reset_n,heading_one_pos,BitStream_buffer_output,num_
 			endcase
 		else 
 			codeNum <= 0; 
+
+
+
+	always @ (exp_golomb_sel or heading_one_pos or BitStream_buffer_output)	
+		$display("codeNum:= %d, exp_golomb_decoding_output:= %d, slice_header_state:= %d\n", codeNum, exp_golomb_decoding_output, slice_header_state);
+
+
+
 	
 	wire [2:0] te_range;
 	assign te_range = num_ref_idx_l0_active_minus1 + 1;

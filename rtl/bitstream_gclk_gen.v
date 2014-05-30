@@ -11,7 +11,7 @@
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
-`include "timescale.v"
+//`include "timescale.v"
 // synopsys translate_on
 `include "nova_defines.v"
 
@@ -85,7 +85,9 @@ module bitstream_gclk_gen (clk,reset_n,freq_ctrl0,freq_ctrl1,parser_state,nal_un
 	output gclk_bs_dec;
 	output end_of_one_frame;
 
-  //Input pin freq_ctrl0 & freq_ctrl1 can be used to adjust frequency after the chip is fabricated
+
+
+	//Input pin freq_ctrl0 & freq_ctrl1 can be used to adjust frequency after the chip is fabricated
 	reg [16:0] cycles_per_frame;
 	always @ (freq_ctrl0 or freq_ctrl1)
 		case ({freq_ctrl1,freq_ctrl0})
@@ -143,7 +145,22 @@ module bitstream_gclk_gen (clk,reset_n,freq_ctrl0,freq_ctrl1,parser_state,nal_un
 	always @ (clk or parser_ena)
 		if (!clk) l_parser_ena <= parser_ena;
 	assign gclk_parser = l_parser_ena & clk;
+
 	
+	
+	wire temp;
+	assign temp = (parser_state == `rst_parser && (!PPS_SPS_complete || (PPS_SPS_complete && end_of_one_frame)))? 1'b1:1'b0;
+	//always @ (posedge clk)	
+		//$display("nal_unit_state:= %d, slice_layer_wo_partitioning_state:= %d\n", nal_unit_state, slice_layer_wo_partitioning_state);
+	always @ (posedge clk)	
+		$display("parser_state:= %d, temp:= %d\n", parser_state, temp);
+	always @ (posedge clk)	
+		$display("PPS_SPS_complete:= %d, parser_ena:= %d, gclk_parser:= %d\n", gclk_slice ,l_slice_ena, slice_ena);
+
+
+
+
+
 	//2.gclk_nal
 	//including rate control for end of one frame
 	wire nal_ena;

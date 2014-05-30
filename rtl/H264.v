@@ -11,43 +11,41 @@
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
-`include "timescale.v"
+//`include "timescale.v"
 // synopsys translate_on
 `include "nova_defines.v"
 
-module nova (clk,reset_n,BitStream_buffer_input,BitStream_ram_ren,BitStream_ram_addr,
-	pic_num,pin_disable_DF,freq_ctrl0,freq_ctrl1,
-	ext_frame_RAM0_cs_n,ext_frame_RAM0_wr,ext_frame_RAM0_addr,ext_frame_RAM0_data,
-	ext_frame_RAM1_cs_n,ext_frame_RAM1_wr,ext_frame_RAM1_addr,ext_frame_RAM1_data,
-	dis_frame_RAM_din,
+import retry_common::*;
+import H264_types::*;
+
+module H264
+(input BoolType 	clk
+ ,input BoolType 	reset_n
+ ,input BitstreamType 	BitStream_buffer_input
+ ,input BoolType 	pin_disable_DF
+ ,input BoolType 	freq_ctrl0
+ ,input BoolType 	freq_ctrl1
 	
-	slice_header_s6
-	);
-	input clk,reset_n;
-	input [15:0] BitStream_buffer_input;
-	input pin_disable_DF;
-	input freq_ctrl0;
-	input freq_ctrl1;
-	
-	output BitStream_ram_ren;
-	output [16:0] BitStream_ram_addr;
-	output [5:0] pic_num;
+ ,output BoolType 	BitStream_ram_ren
+ ,output BitstreamAddrType 	BitStream_ram_addr
+ ,output PicnumType 	pic_num
 	//---ext_frame_RAM0---
-	output ext_frame_RAM0_cs_n;
-	output ext_frame_RAM0_wr;
-	output [13:0] ext_frame_RAM0_addr;
+ ,output BoolType 	ext_frame_RAM0_cs_n
+ ,output BoolType 	ext_frame_RAM0_wr
+ ,output RamAddrType ext_frame_RAM0_addr
 	//inout [31:0] ext_frame_RAM0_data;
-	input [31:0] ext_frame_RAM0_data;
+ ,input RamDataType 	ext_frame_RAM0_data
 	
 	//---ext_frame_RAM1---
-	output ext_frame_RAM1_cs_n;
-	output ext_frame_RAM1_wr;
-	output [13:0] ext_frame_RAM1_addr;
+ ,output BoolType 	ext_frame_RAM1_cs_n
+ ,output BoolType 	ext_frame_RAM1_wr
+ ,output RamAddrType 	ext_frame_RAM1_addr
 	//inout [31:0] ext_frame_RAM1_data;
-	input [31:0] ext_frame_RAM1_data;
+ ,input RamDataType 	ext_frame_RAM1_data
 	
-	output [31:0] dis_frame_RAM_din;
-	output slice_header_s6;
+ ,output RamDataType 	dis_frame_RAM_din
+ ,output BoolType 	slice_header_s6
+ );
 	   
 	wire trigger_CAVLC;	
 	wire end_of_NonZeroCoeff_CAVLC;

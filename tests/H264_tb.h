@@ -59,9 +59,8 @@ void H264_tb_end();
 
 
 #include "retry_common_tb_class.h"
-#include "rnet_common_tb_class.h"
 #include "H264_types_tb_class.h"
-
+ 
 #endif
 
 //end H264_tb.h
