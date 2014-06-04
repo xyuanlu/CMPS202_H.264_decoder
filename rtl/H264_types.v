@@ -3,6 +3,7 @@
 //      Version:        $Revision$
 //      Author:         Rigo Dicochea (http://masc.cse.ucsc.edu/)
 //                      Jose Renau
+//	Modified by	Bipeng Zhang
 //      Copyright:      Copyright 2011 UC Santa Cruz
 //==============================================================================
 
