@@ -1,8 +1,8 @@
 //==============================================================================
 //      File:           $URL$
 //      Version:        $Revision$
-//      Author:         Rigo Dicochea (http://masc.cse.ucsc.edu/)
-//                      Jose Renau
+//      Author:         Bipeng zhang 
+//                      Xiaoyuan Lu
 //      Copyright:      Copyright 2011 UC Santa Cruz
 //==============================================================================
 
