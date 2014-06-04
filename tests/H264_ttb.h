@@ -1,8 +1,7 @@
 //==============================================================================
 //      File:           $URL$
 //      Version:        $Revision$
-//      Author:         Bipeng Zhang
-//                      Xiaoyuan Lu
+//      Author:         Tom Golubev
 //      Copyright:      Copyright 2005-2008 UC Santa Cruz
 //==============================================================================
 
@@ -46,7 +45,7 @@
 ****************************************************************************/
 
 #ifndef H264_TTB
-#define H264_TTB
+#define H264_TTB		
 
 
 /**********************************************************************
@@ -54,7 +53,7 @@
  *********************************************************************/
 typedef struct H264_ports {
 	// All H264's ports
-
+	
 	vpiHandle	reset_n, inputInterface, pin_disable_DF, freq_ctrl0;
 	vpiHandle	freq_ctrl1, instValid, outStop, outputInterface, outValid, stop;
 	vpiHandle	tb_cycle, rci0, rco1,;
@@ -65,22 +64,22 @@ typedef struct H264_ports {
 
 // wrapper function to reduce code density
 inline uint64_t  H264_read(vpiHandle handle, s_vpi_value data, int length, bool first=false) {
-
+	
 	uint64_t ret=0;
 	data.format = vpiBinStrVal;
 	vpi_get_value(handle, &data);
 	read_uint64_t(data.value.str, length, &ret, first);
-
+	
   return ret;
 }
 
 // Main tb object H264 definition
 class H264_{
-  private:
+  private: 
      H264_ports_p handles;
 
   public:
-
+    
     //Start DUT variable definition
     BoolType		reset_n;
     BoolType		pin_disable_DF;
@@ -95,12 +94,12 @@ class H264_{
 	ReclkIOType		rci0;
     ReclkIOType		rco1;
     GenType		tb_cycle;
-    GenType   tb_tune_val;
-
+    GenType   tb_tune_val; 
+    
     // Clear objects every clock cycle. Optimization so we only read / write members we have to
     void clear_fn(){
-
-	    reset_n.clear_fn();
+	
+	    reset_n.clear_fn();	    
 	    pin_disable_DF.clear_fn();
 	    freq_ctrl0.clear_fn();
 	    freq_ctrl1.clear_fn();
@@ -117,7 +116,7 @@ class H264_{
     }// /clear_fn()
 
     // Constructor
-    H264_(H264_ports_p h=0):
+    H264_(H264_ports_p h=0):  
 			reset_n((h!=0)?&(h->reset_n):0, 0, "reset_n") //h.reset_n
 ,			pin_disable_DF((h!=0)?&(h->pin_disable_DF):0, 0, "pin_disable_DF") //h.pin_disable_DF
 ,			freq_ctrl0((h!=0)?&(h->freq_ctrl0):0, 0, "freq_ctrl0") //h.freq_ctrl0
@@ -132,7 +131,7 @@ class H264_{
 ,			rco1((h!=0)?&(h->rco1):0, 0, "rco1") //h.rco1
 ,     tb_cycle((h!=0)?&(h->tb_cycle):0, 0, "tb_cycle", 32)
 ,     tb_tune_val((h!=0)?&(h->tb_tune_val):0, 0, "tb_tune_val", 32){
-
+    
 	handles = h;
 	vpi_printf("@D handles h=%d:", h);
 	if (h == 0) vpi_printf("@D H264 constructor: no handles given");

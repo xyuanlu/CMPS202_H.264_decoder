@@ -37,6 +37,10 @@
 //      (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //      SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //==============================================================================
+//-------------------------------------------------------------------------------------------------
+// Description 
+// top level central logic with two elastic buffer
+//-------------------------------------------------------------------------------------------------
 
 import retry_common::*;
 import rnet_common::*;
@@ -67,9 +71,6 @@ module H264
  ,input BoolType          stop //
 );
 
-always @ (posedge clk)	
-		$display("H264_stop:= %d\n", stop);
-
 
 	InputPacketType		inputInterface_t;
 	BoolType		instValid_t;
@@ -78,20 +79,26 @@ always @ (posedge clk)
 	BoolType		outValid_t;
 	BoolType		stop_t;
 
-	ReclkIOType           rco0;
+	ReclkIOType           rco0;//now we don't consider reclock function
     ReclkIOType           rci1;
+	
+	BoolType reset;//reset_n used in nova, which is low active but in stage, reset is high active.
+	
+	always_comb begin
+		reset = ~reset_n;
+	end
 
     stage #(.Size($bits(InputPacketType)))  stage_inputs
     (.clk       	  (clk),
-     .reset               (reset_n),
+     .reset               (reset),
 
      .din       	  (inputInterface),
      .dinValid            (instValid),
-     .dinRetry            (stop_t),
+     .dinRetry            (outStop),
      //outputs to switch
      .q                   (inputInterface_t),
      .qValid              (instValid_t),
-     .qRetry              (stop),
+     .qRetry              (outStop_t),
      //Re-clocking signals
      .rci           	  (rci0),
      .rco          	  (rco0)
@@ -125,18 +132,19 @@ always @ (posedge clk)
 
 	stage #(.Size($bits(OutputPacketType)))  stage_outputs
     (.clk       	  (clk),
-     .reset               (reset_n),
+     .reset               (reset),
 
      .din                 (outputInterface_t),
      .dinValid            (outValid_t),
-     .dinRetry            (outStop),
+     .dinRetry            (stop_t),
      //outputs to switch
      .q                   (outputInterface),
      .qValid              (outValid),
-     .qRetry              (outStop_t),
+     .qRetry              (stop),
      //Re-clocking signals
      .rci           	  (rci1),
      .rco          	  (rco1)
     );
+ 
  
 endmodule

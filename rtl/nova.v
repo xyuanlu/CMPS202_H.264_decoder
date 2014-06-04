@@ -7,7 +7,7 @@
 // Copyright (C) 2008 Ke Xu                
 //-------------------------------------------------------------------------------------------------
 // Description 
-// Top module of nova design, including two main blocks: BitStream controller and reconstruction datapath
+// central logic of H264 decoder with input and output flops
 //-------------------------------------------------------------------------------------------------
 
 // synopsys translate_off
@@ -53,6 +53,9 @@ module nova
  ,output RamDataType 	dis_frame_RAM_din
  ,output BoolType 	slice_header_s6
  );
+ 
+  always @ (posedge clk)	
+		$display("BitStream_ram_addr:= %d\n", BitStream_ram_addr);
  
  
 	BoolType        		instValid;
