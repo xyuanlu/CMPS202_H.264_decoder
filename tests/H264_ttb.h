@@ -154,6 +154,7 @@ class H264_{
 ,     tb_tune_val((h!=0)?&(h->tb_tune_val):0, 0, "tb_tune_val", 32){
     
 	handles = h;
+	vpi_printf("@D handles h=%d:", h);
 	if (h == 0) vpi_printf("@D H264 constructor: no handles given");
 	clear_fn(); // Clear all objects of read, since we have not read yet; also has to be done start of every ttb_set
 

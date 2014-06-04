@@ -46,6 +46,7 @@
 
 import retry_common::*;
 import H264_types::*;
+`include "nova_defines.v"
 
 
 module  H264_tb();
@@ -113,12 +114,12 @@ module  H264_tb();
 		
     //mclk                                = 1'b1;
     clk                                 = 1'b1;
-	//reset_n = 1'b1;
+	reset_n = 1'b1;
 	pin_disable_DF = 1'b0;
 	freq_ctrl0 = 1'b0;
 	freq_ctrl1 = 1'b1;
-	//#1100 reset_n = 1'b0;
-	//#1000 reset_n = 1'b1;
+	//#680 reset_n = 1'b0;
+	//#680 reset_n = 1'b1;
     
     $H264_init (reset_n,
 		 BitStream_buffer_input,

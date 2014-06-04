@@ -87,7 +87,7 @@ module BitStream_buffer (clk,reset_n,BitStream_buffer_input,pc,
 
 
 	always @ (posedge clk)	
-		$display("BitStream_buffer_output:= %d, BitStream_buffer_valid_n:= %d, half_fill_counter:=%d\n", BitStream_buffer_output, BitStream_buffer_valid_n, half_fill_counter);
+		$display("BitStream_buffer_output:= %h, BitStream_buffer_valid_n:= %d, half_fill_counter:=%d\n", BitStream_buffer_output, BitStream_buffer_valid_n, half_fill_counter);
 
 
 

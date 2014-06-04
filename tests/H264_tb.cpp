@@ -99,7 +99,7 @@ typedef uint32_t PLIType;
 
 using namespace std;
 
-uint64_t NUM_EXECUTE_CYCLES = 50;
+uint64_t NUM_EXECUTE_CYCLES = 57300*300;
 uint64_t num_total_ops = 0;
 
 //Useful debugging macros, debugging and error message macros so we can pin down message provenance at a glance
@@ -109,7 +109,7 @@ uint64_t num_total_ops = 0;
 
 uint32_t            ext_frame_RAM0[9504];
 uint32_t            ext_frame_RAM1[9504];
-uint32_t            BitStream_ram[Beha_Bitstream_ram_size];
+uint16_t            BitStream_ram[Beha_Bitstream_ram_size];
 
 void H264_tb_init() {
 
@@ -128,7 +128,7 @@ void H264_tb_init() {
 	FILE *ifp;
     char *mode = "r";
     char buffer[6];
-    int i=0;
+    int i;
     int j;
 
     //BitStream_ram[Beha_Bitstream_ram_size]= {0};
@@ -142,12 +142,10 @@ void H264_tb_init() {
     //vpi_printf("read:ext_frame_RAM0_cs_n: %d ", BitStream_ram);
 	/////////////////////////////////////////////////////////////
 
-	//fgets(buffer, sizeof(buffer), ifp);
-    while((fgets(buffer, sizeof(buffer), ifp)!=NULL)&&(i<Beha_Bitstream_ram_size)){
-        sscanf(buffer,"%x", &j);
-        BitStream_ram[i]=j;
-        i++;
-        //fgets(buffer, sizeof(buffer), ifp);
+	for(i=0;i<Beha_Bitstream_ram_size;i++){
+        fgets(buffer, sizeof(buffer), ifp);
+            sscanf(buffer,"%x", &j);
+            BitStream_ram[i]=j;
     }
 
 }// /H264_tb_init()
@@ -183,21 +181,27 @@ void H264_tb_set(H264_ * dut) {
 	unsigned char		BitStream_ram_ren;  //the signal
 	uint32_t            BitStream_ram_addr;    //input [16:0]
 	uint32_t            BitStream_buffer_input;
+	int j = 0;
 
 
 
 	if (num_total_ops <= CYCLES_HOLD_RESET)
 	{
-		dut->reset_n                      	= 0;
-        dut->BitStream_buffer_input			= 0;
-        dut->ext_frame_RAM0_data			= 0;
-        dut->ext_frame_RAM1_data			= 0;
+		if (num_total_ops<CYCLES_HOLD_RESET/2)
+			dut->reset_n                      	= 1;
+		else
+			dut->reset_n                      	= 0;
+
+        //dut->BitStream_buffer_input			= 0;
+        //dut->ext_frame_RAM0_data			= 4294967295;
+        //dut->ext_frame_RAM1_data			= 4294967295;
 
 		vpi_printf("@D *************H264_tb set()*************hold reset\n");
 		}
 		else
 		{
 			dut->reset_n		= 1;
+ 		}
 
 			ext_frame_RAM0_addr		= dut->ext_frame_RAM0_addr.to_i();
 			ext_frame_RAM1_addr		= dut->ext_frame_RAM1_addr.to_i();
@@ -208,6 +212,7 @@ void H264_tb_set(H264_ * dut) {
 			ext_frame_RAM1_wr		= dut->ext_frame_RAM1_wr.to_i();
 			slice_header_s6		= dut->slice_header_s6.to_i();
 			dis_frame_RAM_din		= dut->dis_frame_RAM_din.to_i();
+			reset_n 				= dut->reset_n.to_i();
 
 
 			vpi_printf("ext_frame_RAM0_cs_n: %d ext_frame_RAM0_wr: %d ext_frame_RAM0_addr: %d \n", ext_frame_RAM0_cs_n, ext_frame_RAM0_wr, ext_frame_RAM0_addr);
@@ -222,25 +227,35 @@ void H264_tb_set(H264_ * dut) {
 				//waits for 2 units of timescale
 				// Write data at the 32 bit offset 0
 				dut->BitStream_buffer_input = BitStream_ram[BitStream_ram_addr];
-                vpi_printf(" BitStream_ram: %x \n", BitStream_ram[BitStream_ram_addr]);
+                vpi_printf("BitStream_ram[BitStream_ram_addr]: %x \n", BitStream_ram[BitStream_ram_addr]);
 
 			}
 	/////ram0//////////////////////////////////////////////
 			if (!ext_frame_RAM0_cs_n  && ext_frame_RAM0_wr)
 			{
-				dut->ext_frame_RAM0_data = ext_frame_RAM0[ext_frame_RAM0_addr];
-				ext_frame_RAM0[ext_frame_RAM0_addr] = dis_frame_RAM_din;
-				}
 
-			//char* p;
-			//char* str;
-			if (slice_header_s6 == 1 && ((pic_num>>0)&1) == 1)
+				ext_frame_RAM0[ext_frame_RAM0_addr] = dis_frame_RAM_din;
+                //dut->ext_frame_RAM0_data = ext_frame_RAM0[ext_frame_RAM0_addr];
+			}
+
+            if (!ext_frame_RAM0_cs_n  && !ext_frame_RAM0_wr)
+			{
+
+				//ext_frame_RAM0[ext_frame_RAM0_addr] = dis_frame_RAM_din;
+                dut->ext_frame_RAM0_data = ext_frame_RAM0[ext_frame_RAM0_addr];
+			}
+
+
+
+			//if (slice_header_s6 == 1 && ((pic_num>>0)&1) == 1)
+            if (slice_header_s6 == 1 && (pic_num%2==1))
 			{
 				FILE* tracefile_display;
 				tracefile_display = fopen("nova_display.log","a");
 
-					//p = itoa(ext_frame_RAM0[j], str, 16);//change to hex
-					fwrite(ext_frame_RAM0, sizeof(uint32_t), 9504, tracefile_display);
+				//for(j=0;j<9504;j++)
+                        		//fprintf(tracefile_display, "%x", ext_frame_RAM0[j]);
+				fwrite(ext_frame_RAM0, sizeof(uint32_t), 9504, tracefile_display);
 
 				fclose(tracefile_display);
 
@@ -249,25 +264,33 @@ void H264_tb_set(H264_ * dut) {
 	///////ram1////////////////////////////////////////
 			if (!ext_frame_RAM1_cs_n && ext_frame_RAM1_wr)
 			{
-				dut->ext_frame_RAM1_data = ext_frame_RAM1[ext_frame_RAM1_addr];
 				ext_frame_RAM1[ext_frame_RAM1_addr] = dis_frame_RAM_din;
-				}
+                //dut->ext_frame_RAM1_data = ext_frame_RAM1[ext_frame_RAM1_addr];
+			}
 
-			//char* p1;
-			//char* str1;
-			if (slice_header_s6 == 1 && ((pic_num>>0)&1) == 0 && reset_n!=0)
+            if (!ext_frame_RAM1_cs_n && !ext_frame_RAM1_wr)
+			{
+				//ext_frame_RAM1[ext_frame_RAM1_addr] = dis_frame_RAM_din;
+                dut->ext_frame_RAM1_data = ext_frame_RAM1[ext_frame_RAM1_addr];
+			}
+
+
+			//if (slice_header_s6 == 1 && ((pic_num>>0)&1) == 0 && reset_n!=0)
+            if (slice_header_s6 == 1 && (pic_num%2==0) && reset_n!=0)
 			{
 				FILE* tracefile_display;
 				tracefile_display = fopen("nova_display.log","a");
 
-					//p1 = itoa(ext_frame_RAM1[j], str1, 16);
-					fwrite(ext_frame_RAM1, sizeof(uint32_t), 9504, tracefile_display);
+				//for(j=0;j<9504;j++)
+                        		//fprintf(tracefile_display, "%x", ext_frame_RAM1[j]);
+
+				fwrite(ext_frame_RAM1, sizeof(uint32_t), 9504, tracefile_display);
 
 				fclose(tracefile_display);
 
 				vpi_printf("@D *************H264_tb set()*************write in ram1 now\n");
 			}
-		}
+		//}
 
 
 }// /H264_tb_set()
