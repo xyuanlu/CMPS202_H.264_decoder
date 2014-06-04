@@ -38,6 +38,9 @@
 //      SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //==============================================================================
 
+import retry_common::*;
+import rnet_common::*;
+
 package H264_types;
 
   typedef logic [16-1:0]  BitstreamType;
@@ -47,6 +50,28 @@ package H264_types;
  
   typedef logic [32-1:0]  RamDataType;
   typedef logic [14-1:0]  RamAddrType;
+  
+  //typedef logic [1-1:0]   EnableType;
+  
+  typedef struct packed{
+    BitstreamType    BitStream_buffer_input;   //16 bits
+    RamDataType    ext_frame_RAM0_data;  //32 bits
+    RamDataType    ext_frame_RAM1_data;     //32 bits
+  }InputPacketType;  //80 bits
+  
+  typedef struct packed{
+    BoolType    BitStream_ram_ren;   //1 bits
+    BitstreamAddrType    BitStream_ram_addr;  //17 bits
+    PicnumType    pic_num;     //6 bits
+	BoolType		ext_frame_RAM0_cs_n;//1
+	BoolType		ext_frame_RAM0_wr;//1
+	RamAddrType		ext_frame_RAM0_addr;//14
+	BoolType		ext_frame_RAM1_cs_n;//1
+	BoolType		ext_frame_RAM1_wr;//1
+	RamAddrType		ext_frame_RAM1_addr;//14
+	RamDataType		dis_frame_RAM_din;//32
+	BoolType		slice_header_s6;//1
+  }OutputPacketType;  //89 bits
  
   
 endpackage

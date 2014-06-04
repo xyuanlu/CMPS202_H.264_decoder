@@ -54,12 +54,9 @@
 typedef struct H264_ports {
 	// All H264's ports
 	
-	vpiHandle	reset_n, BitStream_buffer_input, pin_disable_DF, freq_ctrl0;
-	vpiHandle	freq_ctrl1, BitStream_ram_ren, BitStream_ram_addr, pic_num;
-	vpiHandle	ext_frame_RAM0_cs_n, ext_frame_RAM0_wr, ext_frame_RAM0_addr, ext_frame_RAM0_data;
-	vpiHandle	ext_frame_RAM1_cs_n, ext_frame_RAM1_wr, ext_frame_RAM1_addr, ext_frame_RAM1_data;
-	vpiHandle	dis_frame_RAM_din, slice_header_s6;
-	vpiHandle	tb_cycle;
+	vpiHandle	reset_n, inputInterface, pin_disable_DF, freq_ctrl0;
+	vpiHandle	freq_ctrl1, instValid, outStop, outputInterface, outValid, stop;
+	vpiHandle	tb_cycle, rci0, rco1,;
 	vpiHandle	tb_tune_val;
 } H264_ports_s, *H264_ports_p;
 
@@ -85,47 +82,35 @@ class H264_{
     
     //Start DUT variable definition
     BoolType		reset_n;
-    BitstreamType		BitStream_buffer_input;
     BoolType		pin_disable_DF;
     BoolType		freq_ctrl0;
     BoolType		freq_ctrl1;
-    BoolType		BitStream_ram_ren;
-    BitstreamAddrType		BitStream_ram_addr;
-    PicnumType		pic_num;
-    BoolType		ext_frame_RAM0_cs_n;
-    BoolType		ext_frame_RAM0_wr;
-    RamAddrType		ext_frame_RAM0_addr;
-    RamDataType		ext_frame_RAM0_data;
-    BoolType		ext_frame_RAM1_cs_n;
-    BoolType		ext_frame_RAM1_wr;
-    RamAddrType		ext_frame_RAM1_addr;
-    RamDataType		ext_frame_RAM1_data;
-    RamDataType		dis_frame_RAM_din;
-    BoolType		slice_header_s6;
+	InputPacketType	  inputInterface;
+	BoolType      	  instValid;
+	BoolType         outStop;
+	OutputPacketType   outputInterface;
+	BoolType         outValid;
+	BoolType          stop;
+	ReclkIOType		rci0;
+    ReclkIOType		rco1;
     GenType		tb_cycle;
     GenType   tb_tune_val; 
     
     // Clear objects every clock cycle. Optimization so we only read / write members we have to
     void clear_fn(){
 	
-	    reset_n.clear_fn();
-	    BitStream_buffer_input.clear_fn();
+	    reset_n.clear_fn();	    
 	    pin_disable_DF.clear_fn();
 	    freq_ctrl0.clear_fn();
 	    freq_ctrl1.clear_fn();
-	    BitStream_ram_ren.clear_fn();
-	    BitStream_ram_addr.clear_fn();
-	    pic_num.clear_fn();
-	    ext_frame_RAM0_cs_n.clear_fn();
-	    ext_frame_RAM0_wr.clear_fn();
-	    ext_frame_RAM0_addr.clear_fn();
-	    ext_frame_RAM0_data.clear_fn();
-	    ext_frame_RAM1_cs_n.clear_fn();
-	    ext_frame_RAM1_wr.clear_fn();
-	    ext_frame_RAM1_addr.clear_fn();
-	    ext_frame_RAM1_data.clear_fn();
-	    dis_frame_RAM_din.clear_fn();
-	    slice_header_s6.clear_fn();
+		inputInterface.clear_fn();
+		instValid.clear_fn();
+		outStop.clear_fn();
+		outputInterface.clear_fn();
+		outValid.clear_fn();
+		stop.clear_fn();
+	    rci0.clear_fn();
+	    rco1.clear_fn();
 	    tb_cycle.clear_fn();
       tb_tune_val.clear_fn();
     }// /clear_fn()
@@ -133,23 +118,17 @@ class H264_{
     // Constructor
     H264_(H264_ports_p h=0):  
 			reset_n((h!=0)?&(h->reset_n):0, 0, "reset_n") //h.reset_n
-,			BitStream_buffer_input((h!=0)?&(h->BitStream_buffer_input):0, 0, "BitStream_buffer_input") //h.BitStream_buffer_input
 ,			pin_disable_DF((h!=0)?&(h->pin_disable_DF):0, 0, "pin_disable_DF") //h.pin_disable_DF
 ,			freq_ctrl0((h!=0)?&(h->freq_ctrl0):0, 0, "freq_ctrl0") //h.freq_ctrl0
 ,			freq_ctrl1((h!=0)?&(h->freq_ctrl1):0, 0, "freq_ctrl1") //h.freq_ctrl1
-,			BitStream_ram_ren((h!=0)?&(h->BitStream_ram_ren):0, 0, "BitStream_ram_ren") //h.BitStream_ram_ren
-,			BitStream_ram_addr((h!=0)?&(h->BitStream_ram_addr):0, 0, "BitStream_ram_addr") //h.BitStream_ram_addr
-,			pic_num((h!=0)?&(h->pic_num):0, 0, "pic_num") //h.pic_num
-,			ext_frame_RAM0_cs_n((h!=0)?&(h->ext_frame_RAM0_cs_n):0, 0, "ext_frame_RAM0_cs_n") //h.ext_frame_RAM0_cs_n
-,			ext_frame_RAM0_wr((h!=0)?&(h->ext_frame_RAM0_wr):0, 0, "ext_frame_RAM0_wr") //h.ext_frame_RAM0_wr
-,			ext_frame_RAM0_addr((h!=0)?&(h->ext_frame_RAM0_addr):0, 0, "ext_frame_RAM0_addr") //h.ext_frame_RAM0_addr
-,			ext_frame_RAM0_data((h!=0)?&(h->ext_frame_RAM0_data):0, 0, "ext_frame_RAM0_data") //h.ext_frame_RAM0_data
-,			ext_frame_RAM1_cs_n((h!=0)?&(h->ext_frame_RAM1_cs_n):0, 0, "ext_frame_RAM1_cs_n") //h.ext_frame_RAM1_cs_n
-,			ext_frame_RAM1_wr((h!=0)?&(h->ext_frame_RAM1_wr):0, 0, "ext_frame_RAM1_wr") //h.ext_frame_RAM1_wr
-,			ext_frame_RAM1_addr((h!=0)?&(h->ext_frame_RAM1_addr):0, 0, "ext_frame_RAM1_addr") //h.ext_frame_RAM1_addr
-,			ext_frame_RAM1_data((h!=0)?&(h->ext_frame_RAM1_data):0, 0, "ext_frame_RAM1_data") //h.ext_frame_RAM1_data
-,			dis_frame_RAM_din((h!=0)?&(h->dis_frame_RAM_din):0, 0, "dis_frame_RAM_din") //h.dis_frame_RAM_din
-,			slice_header_s6((h!=0)?&(h->slice_header_s6):0, 0, "slice_header_s6") //h.slice_header_s6
+,			inputInterface((h!=0)?&(h->inputInterface):0, 0, "inputInterface")
+,			instValid((h!=0)?&(h->instValid):0, 0, "instValid")
+,			outStop((h!=0)?&(h->outStop):0, 0, "outStop")
+,			outputInterface((h!=0)?&(h->outputInterface):0, 0, "outputInterface")
+,			outValid((h!=0)?&(h->outValid):0, 0, "outValid")
+,			stop((h!=0)?&(h->stop):0, 0, "stop")
+,			rci0((h!=0)?&(h->rci0):0, 0, "rci0") //h.rci0
+,			rco1((h!=0)?&(h->rco1):0, 0, "rco1") //h.rco1
 ,     tb_cycle((h!=0)?&(h->tb_cycle):0, 0, "tb_cycle", 32)
 ,     tb_tune_val((h!=0)?&(h->tb_tune_val):0, 0, "tb_tune_val", 32){
     

@@ -179,23 +179,17 @@ PLIType H264_init() {
 			if (GLOBAL_PRINT) vpi_printf("@D Name Found:%s\n", name);
       
 	             	if (strcasecmp(name,"reset_n") == 0) {H264_handles->reset_n = parameter;}
-	             	if (strcasecmp(name,"BitStream_buffer_input") == 0) {H264_handles->BitStream_buffer_input = parameter;}
+					if (strcasecmp(name,"stop") == 0) {H264_handles->stop = parameter;}
+					if (strcasecmp(name,"instValid") == 0) {H264_handles->instValid = parameter;}
+					if (strcasecmp(name,"outValid") == 0) {H264_handles->outValid = parameter;}
+	             	if (strcasecmp(name,"inputInterface") == 0) {H264_handles->inputInterface = parameter;}
 	             	if (strcasecmp(name,"pin_disable_DF") == 0) {H264_handles->pin_disable_DF = parameter;}
 	             	if (strcasecmp(name,"freq_ctrl0") == 0) {H264_handles->freq_ctrl0 = parameter;}
 	             	if (strcasecmp(name,"freq_ctrl1") == 0) {H264_handles->freq_ctrl1 = parameter;}
-	             	if (strcasecmp(name,"BitStream_ram_ren") == 0) {H264_handles->BitStream_ram_ren = parameter;}
-	             	if (strcasecmp(name,"BitStream_ram_addr") == 0) {H264_handles->BitStream_ram_addr = parameter;}
-	             	if (strcasecmp(name,"pic_num") == 0) {H264_handles->pic_num = parameter;}
-	             	if (strcasecmp(name,"ext_frame_RAM0_cs_n") == 0) {H264_handles->ext_frame_RAM0_cs_n = parameter;}
-	             	if (strcasecmp(name,"ext_frame_RAM0_wr") == 0) {H264_handles->ext_frame_RAM0_wr = parameter;}
-	             	if (strcasecmp(name,"ext_frame_RAM0_addr") == 0) {H264_handles->ext_frame_RAM0_addr = parameter;}
-	             	if (strcasecmp(name,"ext_frame_RAM0_data") == 0) {H264_handles->ext_frame_RAM0_data = parameter;}
-	             	if (strcasecmp(name,"ext_frame_RAM1_cs_n") == 0) {H264_handles->ext_frame_RAM1_cs_n = parameter;}
-	             	if (strcasecmp(name,"ext_frame_RAM1_wr") == 0) {H264_handles->ext_frame_RAM1_wr = parameter;}
-	             	if (strcasecmp(name,"ext_frame_RAM1_addr") == 0) {H264_handles->ext_frame_RAM1_addr = parameter;}
-	             	if (strcasecmp(name,"ext_frame_RAM1_data") == 0) {H264_handles->ext_frame_RAM1_data = parameter;}
-	             	if (strcasecmp(name,"dis_frame_RAM_din") == 0) {H264_handles->dis_frame_RAM_din = parameter;}
-	             	if (strcasecmp(name,"slice_header_s6") == 0) {H264_handles->slice_header_s6 = parameter;}
+	             	if (strcasecmp(name,"outStop") == 0) {H264_handles->outStop = parameter;}
+	             	if (strcasecmp(name,"outputInterface") == 0) {H264_handles->outputInterface = parameter;}
+					if (strcasecmp(name,"rci0") == 0) {alu_ref_design_handles->rci0 = parameter;}
+	             	if (strcasecmp(name,"rco1") == 0) {alu_ref_design_handles->rco1 = parameter;}
 
 			if (strcasecmp(name,"tb_cycle") == 0) {H264_handles->tb_cycle = parameter;}
       if (strcasecmp(name, "tb_tune_val") == 0) {H264_handles->tb_tune_val = parameter;}

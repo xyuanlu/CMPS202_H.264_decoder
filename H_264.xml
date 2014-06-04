@@ -1,6 +1,6 @@
 <project name="H_264">
   <requires>retry</requires>
-  <asic frequency="500" tech="32" suite="dct"/>
+  <asic frequency="1000000" tech="32" suite="dct"/>
   <asic base="H264"/>
   <catalyst base="H264" test=""/>
   <fpga base="H264" tool="synplify"/>
