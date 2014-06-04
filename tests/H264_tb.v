@@ -45,6 +45,7 @@
 
 
 import retry_common::*;
+import rnet_common::*;
 import H264_types::*;
 `include "nova_defines.v"
 
@@ -53,23 +54,17 @@ module  H264_tb();
 
   //Start DUT variable definition
   BoolType		reset_n;
-  BitstreamType		BitStream_buffer_input;
   BoolType		pin_disable_DF;
   BoolType		freq_ctrl0;
   BoolType		freq_ctrl1;
-  BoolType		BitStream_ram_ren;
-  BitstreamAddrType		BitStream_ram_addr;
-  PicnumType		pic_num;
-  BoolType		ext_frame_RAM0_cs_n;
-  BoolType		ext_frame_RAM0_wr;
-  RamAddrType		ext_frame_RAM0_addr;
-  RamDataType		ext_frame_RAM0_data;
-  BoolType		ext_frame_RAM1_cs_n;
-  BoolType		ext_frame_RAM1_wr;
-  RamAddrType		ext_frame_RAM1_addr;
-  RamDataType		ext_frame_RAM1_data;
-  RamDataType		dis_frame_RAM_din;
-  BoolType		slice_header_s6;
+  InputPacketType	  inputInterface;
+  BoolType      	  instValid;
+  BoolType         outStop;
+  ReclkIOType      rci0;
+  ReclkIOType      rco1;
+  OutputPacketType   outputInterface;
+  BoolType         outValid;
+  BoolType          stop;
 
   logic mclk;
 
@@ -122,23 +117,17 @@ module  H264_tb();
 	//#680 reset_n = 1'b1;
     
     $H264_init (reset_n,
-		 BitStream_buffer_input,
 		 pin_disable_DF,
 		 freq_ctrl0,
 		 freq_ctrl1,
-		 BitStream_ram_ren,
-		 BitStream_ram_addr,
-		 pic_num,
-		 ext_frame_RAM0_cs_n,
-		 ext_frame_RAM0_wr,
-		 ext_frame_RAM0_addr,
-		 ext_frame_RAM0_data,
-		 ext_frame_RAM1_cs_n,
-		 ext_frame_RAM1_wr,
-		 ext_frame_RAM1_addr,
-		 ext_frame_RAM1_data,
-		 dis_frame_RAM_din,
-		 slice_header_s6,
+		 inputInterface,
+		 instValid,
+		 outStop,
+		 rci0,
+		 rco1,
+		 outputInterface,
+		 outValid,
+		 stop,
 	   tb_cycle, 
      tb_tune_val);// /init fn
 
